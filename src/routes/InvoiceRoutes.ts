@@ -1,4 +1,4 @@
-interface InvoiceRouterInterface {
+interface InvoiceRoutesInterface {
   getAll: () => string;
   getById: (invoice_id: string) => string;
   create: () => string;
@@ -8,7 +8,7 @@ interface InvoiceRouterInterface {
   delete: (invoice_id: string) => string;
 }
 
-class InvoiceRoute implements InvoiceRouterInterface {
+class InvoiceRoutes implements InvoiceRoutesInterface {
   getAll(): string {
     return '/invoices';
   }
@@ -38,4 +38,4 @@ class InvoiceRoute implements InvoiceRouterInterface {
   }
 }
 
-export default new InvoiceRoute();
+export default new InvoiceRoutes();

@@ -1,11 +1,13 @@
 import api from './client-http';
 import authenticate from './authentication';
 import InvoiceService from './services/InvoiceService';
+import SubscriptionService from './services/SubscriptionService';
 import { RecebaFacilClientDTO } from './dto/RecebaFacilClientDTO';
 
-// eslint-disable-next-line import/prefer-default-export
 export = class RecebaFacilClient {
   public invoices: InvoiceService;
+
+  public subscriptions: SubscriptionService;
 
   constructor({ marketplace_id, api_key }: RecebaFacilClientDTO) {
     const authHeader = authenticate(api_key);
@@ -26,5 +28,6 @@ export = class RecebaFacilClient {
     });
 
     this.invoices = new InvoiceService();
+    this.subscriptions = new SubscriptionService();
   }
 };

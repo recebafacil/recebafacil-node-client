@@ -3,7 +3,7 @@ import api from '../client-http';
 import { InvoiceInterface } from '../interfaces/InvoiceInterface';
 import { RecebaResponseInterface } from '../interfaces/ResponseInterface';
 import { CreateInvoiceDTO, UpdateInvoiceDTO } from '../dto/InvoiceDTO';
-import InvoiceRouter from '../routes/invoices';
+import InvoiceRoutes from '../routes/InvoiceRoutes';
 
 interface InvoiceServiceInterface {
   getAll: () => Promise<AxiosResponse<InvoiceInterface[]>>;
@@ -22,31 +22,31 @@ interface InvoiceServiceInterface {
 
 export default class InvoiceService implements InvoiceServiceInterface {
   getAll(): Promise<AxiosResponse<InvoiceInterface[]>> {
-    const URN = InvoiceRouter.getAll();
+    const URN = InvoiceRoutes.getAll();
 
     return api.get<InvoiceInterface[]>(URN);
   }
 
   getById(invoice_id: string): Promise<AxiosResponse<InvoiceInterface>> {
-    const URN = InvoiceRouter.getById(invoice_id);
+    const URN = InvoiceRoutes.getById(invoice_id);
 
     return api.get<InvoiceInterface>(URN);
   }
 
   create(data: CreateInvoiceDTO): Promise<AxiosResponse<InvoiceInterface>> {
-    const URN = InvoiceRouter.create();
+    const URN = InvoiceRoutes.create();
 
     return api.post<InvoiceInterface>(URN, data);
   }
 
   approve(invoice_id: string): Promise<AxiosResponse<InvoiceInterface>> {
-    const URN = InvoiceRouter.approve(invoice_id);
+    const URN = InvoiceRoutes.approve(invoice_id);
 
     return api.post<InvoiceInterface>(URN);
   }
 
   void(invoice_id: string): Promise<AxiosResponse<InvoiceInterface>> {
-    const URN = InvoiceRouter.void(invoice_id);
+    const URN = InvoiceRoutes.void(invoice_id);
 
     return api.post<InvoiceInterface>(URN);
   }
@@ -55,13 +55,13 @@ export default class InvoiceService implements InvoiceServiceInterface {
     invoice_id: string,
     data: UpdateInvoiceDTO
   ): Promise<AxiosResponse<InvoiceInterface>> {
-    const URN = InvoiceRouter.update(invoice_id);
+    const URN = InvoiceRoutes.update(invoice_id);
 
     return api.put<InvoiceInterface>(URN, data);
   }
 
   delete(invoice_id: string): Promise<AxiosResponse<RecebaResponseInterface>> {
-    const URN = InvoiceRouter.delete(invoice_id);
+    const URN = InvoiceRoutes.delete(invoice_id);
 
     return api.delete(URN);
   }
