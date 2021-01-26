@@ -1,3 +1,5 @@
+import { SubscriptionStatusType } from './types';
+
 export interface SubscriptionInterface {
   id: string;
   resouce: 'subscription';
@@ -10,7 +12,7 @@ export interface SubscriptionInterface {
   expiration_date: Date | null;
   amount: number | null;
   currency: string;
-  status: 'active' | 'canceled' | 'expired' | 'suspended';
+  status: SubscriptionStatusType;
   suspended_at: Date | null;
   created_at: Date;
   updated_at: Date;
