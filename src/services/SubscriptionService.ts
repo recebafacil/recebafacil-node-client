@@ -6,9 +6,10 @@ import {
   UpdateSubscriptionDTO,
 } from '../dto/SubscriptionDTO';
 import SubscriptionRoutes from '../routes/SubscriptionRoutes';
+import { ResourceListInterface } from '../interfaces/ResourceListInterface';
 
 interface SubscriptionServiceInterface {
-  getAll: () => Promise<SubscriptionInterface[]>;
+  getAll: () => Promise<ResourceListInterface<SubscriptionInterface>>;
   getById: (subscription_id: string) => Promise<SubscriptionInterface>;
   create: (data: CreateSubscriptionDTO) => Promise<SubscriptionInterface>;
   suspended: (subscription_id: string) => Promise<SubscriptionInterface>;
@@ -22,10 +23,12 @@ interface SubscriptionServiceInterface {
 
 export default class SubscriptionService
   implements SubscriptionServiceInterface {
-  async getAll(): Promise<SubscriptionInterface[]> {
+  async getAll(): Promise<ResourceListInterface<SubscriptionInterface>> {
     const URN = SubscriptionRoutes.getAll();
 
-    const response = await api.get<SubscriptionInterface[]>(URN);
+    const response = await api.get<
+      ResourceListInterface<SubscriptionInterface>
+    >(URN);
 
     return response.data;
   }

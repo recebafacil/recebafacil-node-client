@@ -5,7 +5,7 @@ export interface HistoryTransactionInterface {
   amount: string;
   status: TransactionStatusType;
   authorizer: string;
-  created_at: Date;
+  created_at: string;
   transaction: string;
   authorizer_id: string;
   response_code: string;
@@ -40,10 +40,10 @@ export interface TransactionInterface<
   voided: boolean;
   captured: boolean;
   fees: string;
-  expected_on: Date;
-  voided_at: Date | null;
+  expected_on: string;
+  voided_at: string | null;
   history: HistoryTransactionInterface[];
   metadata: T | null;
-  created_at: Date;
-  updated_at: Date;
+  created_at: string;
+  updated_at: string;
 }

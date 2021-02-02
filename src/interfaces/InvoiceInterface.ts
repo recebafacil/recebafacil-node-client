@@ -7,16 +7,16 @@ export interface InvoiceInterface<T = Record<string, unknown>> {
   customer: string;
   description: string | null;
   payment_method: PaymentMethodType;
-  due_date: Date;
-  expiration_date: Date | null;
+  due_date: string;
+  expiration_date: string | null;
   amount: number;
   currency: string;
-  paid_at: Date | null;
-  voided_at: Date | null;
+  paid_at: string | null;
+  voided_at: string | null;
   retries: number;
   max_retries: 3;
   status: InvoiceStatusType;
   metadata: T | null;
-  created_at: Date;
-  updated_at: Date;
+  created_at: string;
+  updated_at: string;
 }

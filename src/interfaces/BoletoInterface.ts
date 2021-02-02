@@ -6,9 +6,9 @@ export interface BoletoInterface<T = Record<string, unknown>> {
   customer: string;
   status: BoletoStatusType;
   description: string;
-  expiration_date: Date;
-  payment_limit_date: Date | null;
-  paid_at: Date | null;
+  expiration_date: string;
+  payment_limit_date: string | null;
+  paid_at: string | null;
   bank_code: string;
   recipient: string;
   uri: string;
@@ -18,6 +18,6 @@ export interface BoletoInterface<T = Record<string, unknown>> {
   printed: boolean;
   downloaded: boolean;
   metadata: T | null;
-  created_at: Date;
-  updated_at: Date;
+  created_at: string;
+  updated_at: string;
 }

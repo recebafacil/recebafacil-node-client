@@ -3,11 +3,14 @@ import authenticate from './authentication';
 import InvoiceService from './services/InvoiceService';
 import SubscriptionService from './services/SubscriptionService';
 import { RecebaFacilClientDTO } from './dto/RecebaFacilClientDTO';
+import TransactionService from './services/TransactionService';
 
 export = class RecebaFacilClient {
   public invoices: InvoiceService;
 
   public subscriptions: SubscriptionService;
+
+  public transactions: TransactionService;
 
   constructor({ marketplace_id, api_key }: RecebaFacilClientDTO) {
     const authHeader = authenticate(api_key);
@@ -29,5 +32,6 @@ export = class RecebaFacilClient {
 
     this.invoices = new InvoiceService();
     this.subscriptions = new SubscriptionService();
+    this.transactions = new TransactionService();
   }
 };

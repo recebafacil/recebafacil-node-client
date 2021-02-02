@@ -3,9 +3,10 @@ import { InvoiceInterface } from '../interfaces/InvoiceInterface';
 import { RecebaResponseInterface } from '../interfaces/ResponseInterface';
 import { CreateInvoiceDTO, UpdateInvoiceDTO } from '../dto/InvoiceDTO';
 import InvoiceRoutes from '../routes/InvoiceRoutes';
+import { ResourceListInterface } from '../interfaces/ResourceListInterface';
 
 interface InvoiceServiceInterface {
-  getAll: () => Promise<InvoiceInterface[]>;
+  getAll: () => Promise<ResourceListInterface<InvoiceInterface>>;
   getById: (invoice_id: string) => Promise<InvoiceInterface>;
   create: (data: CreateInvoiceDTO) => Promise<InvoiceInterface>;
   approve: (invoice_id: string) => Promise<InvoiceInterface>;
@@ -18,10 +19,12 @@ interface InvoiceServiceInterface {
 }
 
 export default class InvoiceService implements InvoiceServiceInterface {
-  async getAll(): Promise<InvoiceInterface[]> {
+  async getAll(): Promise<ResourceListInterface<InvoiceInterface>> {
     const URN = InvoiceRoutes.getAll();
 
-    const response = await api.get<InvoiceInterface[]>(URN);
+    const response = await api.get<ResourceListInterface<InvoiceInterface>>(
+      URN
+    );
 
     return response.data;
   }
