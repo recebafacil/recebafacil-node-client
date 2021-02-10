@@ -31,7 +31,7 @@ export interface TransactionInterface<
   description: string;
   statement_descriptor: string;
   payment_type: PaymentMethodType;
-  paymentMethod: PaymentMethod;
+  payment_method: PaymentMethod;
   transaction_number: string;
   gateway_authorizer: string;
   sales_receipt: string;

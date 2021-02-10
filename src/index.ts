@@ -2,8 +2,8 @@ import api from './client-http';
 import authenticate from './authentication';
 import InvoiceService from './services/InvoiceService';
 import SubscriptionService from './services/SubscriptionService';
-import { RecebaFacilClientDTO } from './dto/RecebaFacilClientDTO';
 import TransactionService from './services/TransactionService';
+import { RecebaFacilClientDTO } from './dto/RecebaFacilClientDTO';
 
 export = class RecebaFacilClient {
   public invoices: InvoiceService;
