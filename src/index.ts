@@ -15,9 +15,18 @@ export = class RecebaFacilClient {
 
   public plans: PlanService;
 
-  constructor({ marketplace_id, api_key }: RecebaFacilClientDTO) {
+  constructor({
+    marketplace_id,
+    api_key,
+    config = {
+      environment: 'production',
+    },
+  }: RecebaFacilClientDTO) {
     const authHeader = authenticate(api_key);
     api.interceptors.request.use(request => {
+      if (config?.environment === 'development')
+        request.baseURL = 'https://test.api.recebafacil.com';
+
       request.baseURL += `/marketplaces/${marketplace_id}`;
       request.auth = authHeader;
 
