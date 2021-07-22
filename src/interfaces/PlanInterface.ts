@@ -7,7 +7,7 @@ export interface PlanInterface {
   name: string;
   frequency: PlanFrequencyType;
   interval: number;
-  payment_methods: PaymentMethodType;
+  payment_methods: PaymentMethodType[];
   amount: number;
   setup_amount: number;
   currency: string;
