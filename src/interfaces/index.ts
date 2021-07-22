@@ -1,4 +1,5 @@
 export * from './InvoiceInterface';
+export * from './PlanInterface';
 export * from './ResponseInterface';
 export * from './SubscriptionInterface';
 export * from './CardInterface';

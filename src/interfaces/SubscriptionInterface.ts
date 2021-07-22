@@ -2,7 +2,7 @@ import { SubscriptionStatusType } from './types';
 
 export interface SubscriptionInterface {
   id: string;
-  resouce: 'subscription';
+  resource: 'subscription';
   plan: string;
   customer: string;
   description: string | null;

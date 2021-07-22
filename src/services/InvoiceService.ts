@@ -1,6 +1,5 @@
 import api from '../client-http';
-import { InvoiceInterface } from '../interfaces/InvoiceInterface';
-import { RecebaResponseInterface } from '../interfaces/ResponseInterface';
+import { InvoiceInterface, RecebaResponseInterface } from '../interfaces';
 import { CreateInvoiceDTO, UpdateInvoiceDTO } from '../dto/InvoiceDTO';
 import InvoiceRoutes from '../routes/InvoiceRoutes';
 import { ResourceListInterface } from '../interfaces/ResourceListInterface';
@@ -40,9 +39,9 @@ export default class InvoiceService implements InvoiceServiceInterface {
   async create(data: CreateInvoiceDTO): Promise<InvoiceInterface> {
     const URN = InvoiceRoutes.create();
 
-    const repsonse = await api.post<InvoiceInterface>(URN, data);
+    const response = await api.post<InvoiceInterface>(URN, data);
 
-    return repsonse.data;
+    return response.data;
   }
 
   async approve(invoice_id: string): Promise<InvoiceInterface> {

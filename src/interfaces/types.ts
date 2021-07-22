@@ -4,6 +4,8 @@ export type InvoiceStatusType = 'paid' | 'pending' | 'canceled' | 'failed';
 
 export type BoletoStatusType = 'paid' | 'not_paid';
 
+export type PlanFrequencyType = 'daily' | 'monthly' | 'weekly' | 'annually';
+
 export type EventType =
   | 'all'
   | 'bank_account.associated'
