@@ -1,68 +1,81 @@
-import { AxiosResponse } from 'axios';
 import api from '../client-http';
-import { InvoiceInterface } from '../interfaces/InvoiceInterface';
-import { RecebaResponseInterface } from '../interfaces/ResponseInterface';
+import { InvoiceInterface, RecebaResponseInterface } from '../interfaces';
 import { CreateInvoiceDTO, UpdateInvoiceDTO } from '../dto/InvoiceDTO';
 import InvoiceRoutes from '../routes/InvoiceRoutes';
+import { ResourceListInterface } from '../interfaces/ResourceListInterface';
 
 interface InvoiceServiceInterface {
-  getAll: () => Promise<AxiosResponse<InvoiceInterface[]>>;
-  getById: (invoice_id: string) => Promise<AxiosResponse<InvoiceInterface>>;
-  create: (data: CreateInvoiceDTO) => Promise<AxiosResponse<InvoiceInterface>>;
-  approve: (invoice_id: string) => Promise<AxiosResponse<InvoiceInterface>>;
-  void: (invoice_id: string) => Promise<AxiosResponse<InvoiceInterface>>;
+  getAll: () => Promise<ResourceListInterface<InvoiceInterface>>;
+  getById: (invoice_id: string) => Promise<InvoiceInterface>;
+  create: (data: CreateInvoiceDTO) => Promise<InvoiceInterface>;
+  approve: (invoice_id: string) => Promise<InvoiceInterface>;
+  void: (invoice_id: string) => Promise<InvoiceInterface>;
   update: (
     invoice_id: string,
     data: UpdateInvoiceDTO
-  ) => Promise<AxiosResponse<InvoiceInterface>>;
-  delete: (
-    invoice_id: string
-  ) => Promise<AxiosResponse<RecebaResponseInterface>>;
+  ) => Promise<InvoiceInterface>;
+  delete: (invoice_id: string) => Promise<RecebaResponseInterface>;
 }
 
 export default class InvoiceService implements InvoiceServiceInterface {
-  getAll(): Promise<AxiosResponse<InvoiceInterface[]>> {
+  async getAll(): Promise<ResourceListInterface<InvoiceInterface>> {
     const URN = InvoiceRoutes.getAll();
 
-    return api.get<InvoiceInterface[]>(URN);
+    const response = await api.get<ResourceListInterface<InvoiceInterface>>(
+      URN
+    );
+
+    return response.data;
   }
 
-  getById(invoice_id: string): Promise<AxiosResponse<InvoiceInterface>> {
+  async getById(invoice_id: string): Promise<InvoiceInterface> {
     const URN = InvoiceRoutes.getById(invoice_id);
 
-    return api.get<InvoiceInterface>(URN);
+    const response = await api.get<InvoiceInterface>(URN);
+
+    return response.data;
   }
 
-  create(data: CreateInvoiceDTO): Promise<AxiosResponse<InvoiceInterface>> {
+  async create(data: CreateInvoiceDTO): Promise<InvoiceInterface> {
     const URN = InvoiceRoutes.create();
 
-    return api.post<InvoiceInterface>(URN, data);
+    const response = await api.post<InvoiceInterface>(URN, data);
+
+    return response.data;
   }
 
-  approve(invoice_id: string): Promise<AxiosResponse<InvoiceInterface>> {
+  async approve(invoice_id: string): Promise<InvoiceInterface> {
     const URN = InvoiceRoutes.approve(invoice_id);
 
-    return api.post<InvoiceInterface>(URN);
+    const response = await api.post<InvoiceInterface>(URN);
+
+    return response.data;
   }
 
-  void(invoice_id: string): Promise<AxiosResponse<InvoiceInterface>> {
+  async void(invoice_id: string): Promise<InvoiceInterface> {
     const URN = InvoiceRoutes.void(invoice_id);
 
-    return api.post<InvoiceInterface>(URN);
+    const response = await api.post<InvoiceInterface>(URN);
+
+    return response.data;
   }
 
-  update(
+  async update(
     invoice_id: string,
     data: UpdateInvoiceDTO
-  ): Promise<AxiosResponse<InvoiceInterface>> {
+  ): Promise<InvoiceInterface> {
     const URN = InvoiceRoutes.update(invoice_id);
 
-    return api.put<InvoiceInterface>(URN, data);
+    const response = await api.put<InvoiceInterface>(URN, data);
+
+    return response.data;
   }
 
-  delete(invoice_id: string): Promise<AxiosResponse<RecebaResponseInterface>> {
+  async delete(invoice_id: string): Promise<RecebaResponseInterface> {
     const URN = InvoiceRoutes.delete(invoice_id);
 
-    return api.delete(URN);
+    const response = await api.delete(URN);
+
+    return response.data;
   }
 }

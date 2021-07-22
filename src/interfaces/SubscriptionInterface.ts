@@ -1,17 +1,19 @@
+import { SubscriptionStatusType } from './types';
+
 export interface SubscriptionInterface {
   id: string;
-  resouce: 'subscription';
+  resource: 'subscription';
   plan: string;
   customer: string;
   description: string | null;
   payment_method: 'credit';
-  due_date: Date;
-  due_since_date: Date | null;
-  expiration_date: Date | null;
+  due_date: string;
+  due_since_date: string | null;
+  expiration_date: string | null;
   amount: number | null;
   currency: string;
-  status: 'active' | 'canceled' | 'expired' | 'suspended';
-  suspended_at: Date | null;
-  created_at: Date;
-  updated_at: Date;
+  status: SubscriptionStatusType;
+  suspended_at: string | null;
+  created_at: string;
+  updated_at: string;
 }

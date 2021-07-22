@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import api from '../client-http';
 import { SubscriptionInterface } from '../interfaces/SubscriptionInterface';
 import { RecebaResponseInterface } from '../interfaces/ResponseInterface';
@@ -7,84 +6,81 @@ import {
   UpdateSubscriptionDTO,
 } from '../dto/SubscriptionDTO';
 import SubscriptionRoutes from '../routes/SubscriptionRoutes';
+import { ResourceListInterface } from '../interfaces/ResourceListInterface';
 
 interface SubscriptionServiceInterface {
-  getAll: () => Promise<AxiosResponse<SubscriptionInterface[]>>;
-  getById: (
-    subscription_id: string
-  ) => Promise<AxiosResponse<SubscriptionInterface>>;
-  create: (
-    data: CreateSubscriptionDTO
-  ) => Promise<AxiosResponse<SubscriptionInterface>>;
-  suspended: (
-    subscription_id: string
-  ) => Promise<AxiosResponse<SubscriptionInterface>>;
-  reactivate: (
-    subscription_id: string
-  ) => Promise<AxiosResponse<SubscriptionInterface>>;
+  getAll: () => Promise<ResourceListInterface<SubscriptionInterface>>;
+  getById: (subscription_id: string) => Promise<SubscriptionInterface>;
+  create: (data: CreateSubscriptionDTO) => Promise<SubscriptionInterface>;
+  suspended: (subscription_id: string) => Promise<SubscriptionInterface>;
+  reactivate: (subscription_id: string) => Promise<SubscriptionInterface>;
   update: (
     subscription_id: string,
     data: UpdateSubscriptionDTO
-  ) => Promise<AxiosResponse<SubscriptionInterface>>;
-  delete: (
-    subscription_id: string
-  ) => Promise<AxiosResponse<RecebaResponseInterface>>;
+  ) => Promise<SubscriptionInterface>;
+  delete: (subscription_id: string) => Promise<RecebaResponseInterface>;
 }
 
 export default class SubscriptionService
   implements SubscriptionServiceInterface {
-  getAll(): Promise<AxiosResponse<SubscriptionInterface[]>> {
+  async getAll(): Promise<ResourceListInterface<SubscriptionInterface>> {
     const URN = SubscriptionRoutes.getAll();
 
-    return api.get<SubscriptionInterface[]>(URN);
+    const response = await api.get<
+      ResourceListInterface<SubscriptionInterface>
+    >(URN);
+
+    return response.data;
   }
 
-  getById(
-    subscription_id: string
-  ): Promise<AxiosResponse<SubscriptionInterface>> {
+  async getById(subscription_id: string): Promise<SubscriptionInterface> {
     const URN = SubscriptionRoutes.getById(subscription_id);
 
-    return api.get<SubscriptionInterface>(URN);
+    const response = await api.get<SubscriptionInterface>(URN);
+
+    return response.data;
   }
 
-  create(
-    data: CreateSubscriptionDTO
-  ): Promise<AxiosResponse<SubscriptionInterface>> {
+  async create(data: CreateSubscriptionDTO): Promise<SubscriptionInterface> {
     const URN = SubscriptionRoutes.create();
 
-    return api.post<SubscriptionInterface>(URN, data);
+    const response = await api.post<SubscriptionInterface>(URN, data);
+
+    return response.data;
   }
 
-  suspended(
-    subscription_id: string
-  ): Promise<AxiosResponse<SubscriptionInterface>> {
+  async suspended(subscription_id: string): Promise<SubscriptionInterface> {
     const URN = SubscriptionRoutes.suspended(subscription_id);
 
-    return api.post<SubscriptionInterface>(URN);
+    const response = await api.post<SubscriptionInterface>(URN);
+
+    return response.data;
   }
 
-  reactivate(
-    subscription_id: string
-  ): Promise<AxiosResponse<SubscriptionInterface>> {
+  async reactivate(subscription_id: string): Promise<SubscriptionInterface> {
     const URN = SubscriptionRoutes.reactivate(subscription_id);
 
-    return api.post<SubscriptionInterface>(URN);
+    const response = await api.post<SubscriptionInterface>(URN);
+
+    return response.data;
   }
 
-  update(
+  async update(
     subscription_id: string,
     data: UpdateSubscriptionDTO
-  ): Promise<AxiosResponse<SubscriptionInterface>> {
+  ): Promise<SubscriptionInterface> {
     const URN = SubscriptionRoutes.update(subscription_id);
 
-    return api.put<SubscriptionInterface>(URN, data);
+    const response = await api.put<SubscriptionInterface>(URN, data);
+
+    return response.data;
   }
 
-  delete(
-    subscription_id: string
-  ): Promise<AxiosResponse<RecebaResponseInterface>> {
+  async delete(subscription_id: string): Promise<RecebaResponseInterface> {
     const URN = SubscriptionRoutes.delete(subscription_id);
 
-    return api.delete(URN);
+    const response = await api.delete(URN);
+
+    return response.data;
   }
 }

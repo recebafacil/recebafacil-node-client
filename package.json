@@ -1,12 +1,12 @@
 {
   "name": "recebafacil-node-client",
-  "version": "1.0.3",
-  "description": "A Javscript library to interface with Recebafacil API",
+  "version": "1.0.9",
+  "description": "A Javascript library to interface with Fpay API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsnd --transpile-only --respawn --ignore-watch node_modules src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "Receba Fácil",
