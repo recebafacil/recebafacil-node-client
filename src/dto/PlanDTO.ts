@@ -4,6 +4,7 @@ export type CreatePlanDTO = Pick<
   PlanInterface,
   | 'name'
   | 'frequency'
+  | 'interval'
   | 'payment_methods'
   | 'amount'
   | 'setup_amount'
@@ -16,6 +17,7 @@ export type UpdatePlanDTO = Partial<
     PlanInterface,
     | 'name'
     | 'frequency'
+    | 'interval'
     | 'payment_methods'
     | 'amount'
     | 'setup_amount'
