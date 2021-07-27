@@ -22,7 +22,7 @@ class SubscriptionRoutes implements SubscriptionRoutesInterface {
   }
 
   suspended(subscription_id: string): string {
-    return `/subscriptions/${subscription_id}/suspended`;
+    return `/subscriptions/${subscription_id}/suspend`;
   }
 
   reactivate(subscription_id: string): string {
