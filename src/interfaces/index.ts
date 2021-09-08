@@ -7,3 +7,4 @@ export * from './BoletoInterface';
 export * from './TransactionInterface';
 export * from './types';
 export * from './EventInterface';
+export * from './BuyerInterface';

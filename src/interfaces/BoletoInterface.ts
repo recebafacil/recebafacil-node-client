@@ -14,7 +14,7 @@ export interface BoletoInterface<T = Record<string, unknown>> {
   uri: string;
   barcode: string;
   address: string | null;
-  accpeted: boolean;
+  accepted: boolean;
   printed: boolean;
   downloaded: boolean;
   metadata: T | null;

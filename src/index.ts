@@ -5,6 +5,7 @@ import SubscriptionService from './services/SubscriptionService';
 import TransactionService from './services/TransactionService';
 import { RecebaFacilClientDTO } from './dto/RecebaFacilClientDTO';
 import PlanService from './services/PlanService';
+import BuyerService from './services/BuyerService';
 
 export = class RecebaFacilClient {
   public invoices: InvoiceService;
@@ -14,6 +15,8 @@ export = class RecebaFacilClient {
   public transactions: TransactionService;
 
   public plans: PlanService;
+
+  public buyers: BuyerService;
 
   constructor({
     marketplace_id,
@@ -26,6 +29,7 @@ export = class RecebaFacilClient {
     api.interceptors.request.use(request => {
       if (config?.environment === 'development')
         request.baseURL = 'https://test.api.recebafacil.com';
+      else request.baseURL = 'https://api.recebafacil.com';
 
       request.baseURL += `/marketplaces/${marketplace_id}`;
       request.auth = authHeader;
@@ -46,5 +50,6 @@ export = class RecebaFacilClient {
     this.subscriptions = new SubscriptionService();
     this.transactions = new TransactionService();
     this.plans = new PlanService();
+    this.buyers = new BuyerService();
   }
 };
