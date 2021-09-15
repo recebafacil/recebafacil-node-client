@@ -8,3 +8,4 @@ export * from './TransactionInterface';
 export * from './types';
 export * from './EventInterface';
 export * from './BuyerInterface';
+export * from './TokenInterface';

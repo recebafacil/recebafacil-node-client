@@ -1,4 +1,4 @@
-export interface Card {
+export interface CardInterface {
   id: string;
   resource: 'card';
   customer: string;
@@ -9,6 +9,6 @@ export interface Card {
   expiration_month: string;
   expiration_year: string;
   holder_name: string;
-  created_at: string;
-  updated_at: string;
+  created_at: Date;
+  updated_at: Date;
 }
