@@ -39,6 +39,14 @@ interface PaymentMethodInterface {
   billing_instructions?: BillingInstructionsInterface;
 }
 
+interface CardInterface {
+  holder_name: string;
+  expiration_month: string;
+  expiration_year: string;
+  card_number: string;
+  security_code: string;
+}
+
 export type TransactionDTO = {
   amount: number;
   currency: string;
@@ -46,6 +54,8 @@ export type TransactionDTO = {
   payment_type: PaymentMethodType;
   on_behalf_of: string;
   customer: string;
+  card_id?: string;
+  card?: CardInterface;
   statement_descriptor?: string | null;
   capture?: boolean;
   payment_method?: PaymentMethodInterface;
