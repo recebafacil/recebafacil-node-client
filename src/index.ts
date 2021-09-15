@@ -6,6 +6,7 @@ import TransactionService from './services/TransactionService';
 import { RecebaFacilClientDTO } from './dto/RecebaFacilClientDTO';
 import PlanService from './services/PlanService';
 import BuyerService from './services/BuyerService';
+import CardService from './services/CardService';
 
 export = class RecebaFacilClient {
   public invoices: InvoiceService;
@@ -17,6 +18,8 @@ export = class RecebaFacilClient {
   public plans: PlanService;
 
   public buyers: BuyerService;
+
+  public cards: CardService;
 
   constructor({
     marketplace_id,
@@ -51,5 +54,6 @@ export = class RecebaFacilClient {
     this.transactions = new TransactionService();
     this.plans = new PlanService();
     this.buyers = new BuyerService();
+    this.cards = new CardService();
   }
 };
