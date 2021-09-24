@@ -58,5 +58,6 @@ export type TransactionDTO = {
   card?: CardInterface;
   statement_descriptor?: string | null;
   capture?: boolean;
+  number_installments?: number;
   payment_method?: PaymentMethodInterface;
 };
