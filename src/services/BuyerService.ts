@@ -3,6 +3,7 @@ import { BuyerInterface, RecebaResponseInterface } from '../interfaces';
 import { CreateBuyerDTO, UpdateBuyerDTO } from '../dto/BuyerDTO';
 import BuyerRoutes from '../routes/BuyerRoutes';
 import { ResourceListInterface } from '../interfaces/ResourceListInterface';
+import BuyerCardsService from './BuyerCardsService';
 
 interface BuyerServiceInterface {
   getAll: () => Promise<ResourceListInterface<BuyerInterface>>;
@@ -13,6 +14,12 @@ interface BuyerServiceInterface {
 }
 
 export default class BuyerService implements BuyerServiceInterface {
+  public cards: BuyerCardsService;
+
+  constructor() {
+    this.cards = new BuyerCardsService();
+  }
+
   async getAll(): Promise<ResourceListInterface<BuyerInterface>> {
     const URN = BuyerRoutes.getAll();
 
