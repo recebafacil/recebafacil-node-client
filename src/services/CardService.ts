@@ -8,15 +8,15 @@ import { CreateCardDTO, GenerateTokenCardDTO } from '../dto/CardDTO';
 import CardRoutes from '../routes/CardRoutes';
 
 interface CardServiceInterface {
-  getById: (buyer_id: string) => Promise<CardInterface>;
+  getById: (card_id: string) => Promise<CardInterface>;
   create: (data: CreateCardDTO) => Promise<CardInterface>;
   generateToken: (data: GenerateTokenCardDTO) => Promise<TokenInterface>;
-  delete: (buyer_id: string) => Promise<RecebaResponseInterface>;
+  delete: (card_id: string) => Promise<RecebaResponseInterface>;
 }
 
 export default class CardService implements CardServiceInterface {
-  async getById(buyer_id: string): Promise<CardInterface> {
-    const URN = CardRoutes.getById(buyer_id);
+  async getById(card_id: string): Promise<CardInterface> {
+    const URN = CardRoutes.getById(card_id);
 
     const response = await api.get<CardInterface>(URN);
 
@@ -39,8 +39,8 @@ export default class CardService implements CardServiceInterface {
     return response.data;
   }
 
-  async delete(buyer_id: string): Promise<RecebaResponseInterface> {
-    const URN = CardRoutes.delete(buyer_id);
+  async delete(card_id: string): Promise<RecebaResponseInterface> {
+    const URN = CardRoutes.delete(card_id);
 
     const response = await api.delete(URN);
 
