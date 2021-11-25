@@ -48,13 +48,15 @@ export default class TransactionService implements TransactionServiceInterface {
   }
 
   async create(
-    data: TransactionDTO
+    data: TransactionDTO,
+    options: Record<string, unknown> = {}
   ): Promise<TransactionInterface<PaymentMethodType>> {
     const URN = TransactionRoutes.create();
 
     const response = await api.post<TransactionInterface<PaymentMethodType>>(
       URN,
-      data
+      data,
+      options
     );
 
     return response.data;

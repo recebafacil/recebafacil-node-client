@@ -36,10 +36,13 @@ export default class InvoiceService implements InvoiceServiceInterface {
     return response.data;
   }
 
-  async create(data: CreateInvoiceDTO): Promise<InvoiceInterface> {
+  async create(
+    data: CreateInvoiceDTO,
+    options: Record<string, unknown> = {}
+  ): Promise<InvoiceInterface> {
     const URN = InvoiceRoutes.create();
 
-    const response = await api.post<InvoiceInterface>(URN, data);
+    const response = await api.post<InvoiceInterface>(URN, data, options);
 
     return response.data;
   }
