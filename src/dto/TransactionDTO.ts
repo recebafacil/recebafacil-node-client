@@ -60,4 +60,5 @@ export type TransactionDTO = {
   capture?: boolean;
   number_installments?: number;
   payment_method?: PaymentMethodInterface;
+  metadata?: Record<string, unknown>;
 };
