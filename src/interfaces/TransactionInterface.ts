@@ -1,4 +1,11 @@
-import { PaymentMethodType, TransactionStatusType } from './types';
+import {
+  PaymentMethodType,
+  ProductStatusType,
+  TransactionStatusType,
+} from './types';
+import { BoletoInterface } from './BoletoInterface';
+import { PixInterface } from './PixInterface';
+import { CardInterface } from './CardInterface';
 
 export interface HistoryTransactionInterface {
   id: string;
@@ -16,9 +23,41 @@ export interface HistoryTransactionInterface {
   gatewayResponseTime: string;
 }
 
+export interface TransactionOfferInterface<Metadata = Record<string, unknown>> {
+  id: string;
+  resource: 'transaction.product.offer';
+  product: string;
+  main: boolean;
+  amount: number;
+  dateStart: string;
+  automaticallyRecoverSales: boolean;
+  metadata: Metadata | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface TransactionProductInterface<
+  Metadata = Record<string, unknown>,
+  OfferMetadata = Record<string, unknown>
+> {
+  id: string;
+  resource: 'transaction.product';
+  customer: string;
+  transaction: string;
+  offer: TransactionOfferInterface<OfferMetadata>;
+  name: string;
+  description: string;
+  status: ProductStatusType;
+  metadata: Metadata | null;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface TransactionInterface<
-  PaymentMethod,
-  T = Record<string, unknown>
+  PaymentMethod = CardInterface | BoletoInterface | PixInterface,
+  Metadata = Record<string, unknown>,
+  ProductMetadata = Record<string, unknown>,
+  OfferMetadata = Record<string, unknown>
 > {
   id: string;
   resource: 'transaction';
@@ -27,11 +66,13 @@ export interface TransactionInterface<
   status: TransactionStatusType;
   amount: number;
   original_amount: number;
+  discount_amount: number;
   currency: string;
   description: string;
   statement_descriptor: string;
   payment_type: PaymentMethodType;
   payment_method: PaymentMethod;
+  products: TransactionProductInterface<ProductMetadata, OfferMetadata>[];
   transaction_number: string;
   gateway_authorizer: string;
   sales_receipt: string;
@@ -43,7 +84,7 @@ export interface TransactionInterface<
   expected_on: string;
   voided_at: string | null;
   history: HistoryTransactionInterface[];
-  metadata: T | null;
+  metadata: Metadata | null;
   created_at: string;
   updated_at: string;
 }

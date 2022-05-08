@@ -1,6 +1,6 @@
 {
   "name": "recebafacil-node-client",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "A Javascript library to interface with Fpay API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

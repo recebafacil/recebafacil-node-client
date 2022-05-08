@@ -6,6 +6,8 @@ export type BoletoStatusType = 'paid' | 'not_paid';
 
 export type PlanFrequencyType = 'daily' | 'monthly' | 'weekly' | 'annually';
 
+export type ProductStatusType = 'active' | 'disabled';
+
 export type EventType =
   | 'all'
   | 'bank_account.associated'
