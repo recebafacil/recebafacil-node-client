@@ -1,5 +1,6 @@
 export interface PixInterface<Metadata = Record<string, unknown>> {
   id: string;
+  resource: 'pix';
   customer: string;
   provider: string;
   expiration_date: string;
