@@ -47,6 +47,7 @@ export interface TransactionProductInterface<
   offer: TransactionOfferInterface<OfferMetadata>;
   name: string;
   description: string;
+  image: string | null;
   status: ProductStatusType;
   metadata: Metadata | null;
   created_at: string;
