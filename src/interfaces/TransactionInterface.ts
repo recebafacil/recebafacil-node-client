@@ -1,11 +1,11 @@
-import {
+import type {
   PaymentMethodType,
   ProductStatusType,
   TransactionStatusType,
 } from './types';
-import { BoletoInterface } from './BoletoInterface';
-import { PixInterface } from './PixInterface';
-import { CardInterface } from './CardInterface';
+import type { BoletoInterface } from './BoletoInterface';
+import type { PixInterface } from './PixInterface';
+import type { CardInterface } from './CardInterface';
 
 export interface HistoryTransactionInterface {
   id: string;

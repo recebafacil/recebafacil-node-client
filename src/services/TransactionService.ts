@@ -1,7 +1,11 @@
 import api from '../client-http';
-import { TransactionDTO } from '../dto/TransactionDTO';
-import { PaymentMethodType, TransactionInterface } from '../interfaces';
-import { ResourceListInterface } from '../interfaces/ResourceListInterface';
+import type { TransactionDTO } from '../dto/TransactionDTO';
+import type {
+  PaymentMethodType,
+  TransactionInterface,
+  ResourceListInterface,
+} from '../interfaces';
+
 import TransactionRoutes from '../routes/TransactionRoutes';
 
 interface TransactionServiceInterface {

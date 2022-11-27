@@ -1,4 +1,4 @@
-import { CardInterface } from '../interfaces';
+import type { CardInterface } from '../interfaces';
 
 export interface CreateCardDTO {
   token: string;

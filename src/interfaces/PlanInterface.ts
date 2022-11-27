@@ -1,4 +1,4 @@
-import { PaymentMethodType, PlanFrequencyType } from './types';
+import type { PaymentMethodType, PlanFrequencyType } from './types';
 
 export interface PlanInterface {
   id: string;

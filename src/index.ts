@@ -3,12 +3,14 @@ import authenticate from './authentication';
 import InvoiceService from './services/InvoiceService';
 import SubscriptionService from './services/SubscriptionService';
 import TransactionService from './services/TransactionService';
-import { RecebaFacilClientDTO } from './dto/RecebaFacilClientDTO';
+import type { RecebaFacilClientDTO } from './dto/RecebaFacilClientDTO';
 import PlanService from './services/PlanService';
 import BuyerService from './services/BuyerService';
 import CardService from './services/CardService';
 
-export = class RecebaFacilClient {
+export * from './interfaces';
+
+export default class RecebaFacilClient {
   public invoices: InvoiceService;
 
   public subscriptions: SubscriptionService;
@@ -56,4 +58,4 @@ export = class RecebaFacilClient {
     this.buyers = new BuyerService();
     this.cards = new CardService();
   }
-};
+}

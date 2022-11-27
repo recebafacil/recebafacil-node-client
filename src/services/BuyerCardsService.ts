@@ -1,5 +1,5 @@
-import { ResourceListInterface } from '../interfaces/ResourceListInterface';
-import { CardInterface } from '../interfaces';
+import type { ResourceListInterface, CardInterface } from '../interfaces';
+
 import BuyerCardsRoutes from '../routes/BuyerCardsRoutes';
 import api from '../client-http';
 

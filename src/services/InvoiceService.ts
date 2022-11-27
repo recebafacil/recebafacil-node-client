@@ -1,8 +1,11 @@
 import api from '../client-http';
-import { InvoiceInterface, RecebaResponseInterface } from '../interfaces';
-import { CreateInvoiceDTO, UpdateInvoiceDTO } from '../dto/InvoiceDTO';
+import type {
+  InvoiceInterface,
+  RecebaResponseInterface,
+  ResourceListInterface,
+} from '../interfaces';
+import type { CreateInvoiceDTO, UpdateInvoiceDTO } from '../dto/InvoiceDTO';
 import InvoiceRoutes from '../routes/InvoiceRoutes';
-import { ResourceListInterface } from '../interfaces/ResourceListInterface';
 
 interface InvoiceServiceInterface {
   getAll: () => Promise<ResourceListInterface<InvoiceInterface>>;

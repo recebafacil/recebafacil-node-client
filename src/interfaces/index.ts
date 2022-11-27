@@ -5,6 +5,7 @@ export * from './EventInterface';
 export * from './InvoiceInterface';
 export * from './PixInterface';
 export * from './PlanInterface';
+export * from './ResourceListInterface';
 export * from './ResponseInterface';
 export * from './SubscriptionInterface';
 export * from './TokenInterface';

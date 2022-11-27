@@ -1,4 +1,4 @@
-import { CardInterface } from './CardInterface';
+import type { CardInterface } from './CardInterface';
 
 export interface TokenInterface {
   id: string;

@@ -1,4 +1,4 @@
-import { PaymentMethodType, InvoiceStatusType } from './types';
+import type { PaymentMethodType, InvoiceStatusType } from './types';
 
 export interface InvoiceInterface<T = Record<string, unknown>> {
   id: string;

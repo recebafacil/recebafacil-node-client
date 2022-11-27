@@ -1,10 +1,10 @@
 import api from '../client-http';
-import {
+import type {
   CardInterface,
   RecebaResponseInterface,
   TokenInterface,
 } from '../interfaces';
-import { CreateCardDTO, GenerateTokenCardDTO } from '../dto/CardDTO';
+import type { CreateCardDTO, GenerateTokenCardDTO } from '../dto/CardDTO';
 import CardRoutes from '../routes/CardRoutes';
 
 interface CardServiceInterface {

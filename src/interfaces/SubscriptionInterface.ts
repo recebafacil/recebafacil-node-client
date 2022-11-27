@@ -1,4 +1,4 @@
-import { SubscriptionStatusType } from './types';
+import type { SubscriptionStatusType } from './types';
 
 export interface SubscriptionInterface {
   id: string;

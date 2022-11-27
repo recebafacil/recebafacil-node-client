@@ -1,8 +1,12 @@
 import api from '../client-http';
-import { BuyerInterface, RecebaResponseInterface } from '../interfaces';
-import { CreateBuyerDTO, UpdateBuyerDTO } from '../dto/BuyerDTO';
+import type {
+  BuyerInterface,
+  RecebaResponseInterface,
+  ResourceListInterface,
+} from '../interfaces';
+import type { CreateBuyerDTO, UpdateBuyerDTO } from '../dto/BuyerDTO';
 import BuyerRoutes from '../routes/BuyerRoutes';
-import { ResourceListInterface } from '../interfaces/ResourceListInterface';
+
 import BuyerCardsService from './BuyerCardsService';
 
 interface BuyerServiceInterface {

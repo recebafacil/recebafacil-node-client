@@ -1,4 +1,4 @@
-import { InvoiceInterface } from '../interfaces/InvoiceInterface';
+import type { InvoiceInterface } from '../interfaces';
 
 export type CreateInvoiceDTO = Pick<
   InvoiceInterface,

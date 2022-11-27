@@ -6,7 +6,13 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsnd --transpile-only --respawn --ignore-watch node_modules src/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "fix": "yarn fix:eslint && yarn fix:prettier",
+    "fix:eslint": "eslint --fix \"src/**/*.{js,ts,jsx,tsx}\"",
+    "fix:prettier": "prettier --write \"src/**/*.{js,ts,jsx,tsx}\"",
+    "lint": "yarn lint:eslint && yarn lint:prettier",
+    "lint:eslint": "eslint \"src/**/*.{js,ts,jsx,tsx}\"",
+    "lint:prettier": "prettier --check \"src/**/*.{js,ts,jsx,tsx}\""
   },
   "keywords": [],
   "author": "Receba Fácil",

@@ -1,12 +1,15 @@
 import api from '../client-http';
-import { SubscriptionInterface } from '../interfaces/SubscriptionInterface';
-import { RecebaResponseInterface } from '../interfaces/ResponseInterface';
-import {
+import type {
+  SubscriptionInterface,
+  RecebaResponseInterface,
+  ResourceListInterface,
+} from '../interfaces';
+
+import type {
   CreateSubscriptionDTO,
   UpdateSubscriptionDTO,
 } from '../dto/SubscriptionDTO';
 import SubscriptionRoutes from '../routes/SubscriptionRoutes';
-import { ResourceListInterface } from '../interfaces/ResourceListInterface';
 
 interface SubscriptionServiceInterface {
   getAll: () => Promise<ResourceListInterface<SubscriptionInterface>>;

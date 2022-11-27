@@ -1,4 +1,4 @@
-import { BoletoStatusType } from './types';
+import type { BoletoStatusType } from './types';
 
 export interface BoletoInterface<T = Record<string, unknown>> {
   id: string;

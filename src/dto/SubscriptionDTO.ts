@@ -1,4 +1,4 @@
-import { SubscriptionInterface } from '../interfaces/SubscriptionInterface';
+import type { SubscriptionInterface } from '../interfaces';
 
 export type CreateSubscriptionDTO = Pick<
   SubscriptionInterface,

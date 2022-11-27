@@ -1,4 +1,4 @@
-import { PlanInterface } from '../interfaces';
+import type { PlanInterface } from '../interfaces';
 
 export type CreatePlanDTO = Pick<
   PlanInterface,

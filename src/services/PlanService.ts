@@ -1,8 +1,11 @@
 import api from '../client-http';
-import { PlanInterface, RecebaResponseInterface } from '../interfaces';
-import { CreatePlanDTO, UpdatePlanDTO } from '../dto/PlanDTO';
+import type {
+  PlanInterface,
+  RecebaResponseInterface,
+  ResourceListInterface,
+} from '../interfaces';
+import type { CreatePlanDTO, UpdatePlanDTO } from '../dto/PlanDTO';
 import PlanRoutes from '../routes/PlanRoutes';
-import { ResourceListInterface } from '../interfaces/ResourceListInterface';
 
 interface PlanServiceInterface {
   getAll: () => Promise<ResourceListInterface<PlanInterface>>;
