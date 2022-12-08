@@ -11,7 +11,7 @@ export interface BoletoInterface<T = Record<string, unknown>> {
   paid_at: string | null;
   bank_code: string;
   recipient: string;
-  uri: string;
+  url: string;
   barcode: string;
   address: string | null;
   accepted: boolean;
