@@ -6,6 +6,6 @@ export interface TokenInterface {
   used: boolean;
   type: 'card';
   card: CardInterface;
-  created_at: Date;
-  updated_at: Date;
+  created_at: string;
+  updated_at: string;
 }

@@ -6,7 +6,7 @@ export interface BuyerInterface {
   email: string | null;
   email_secondary: string | null;
   phone_number: string | null;
-  birthdate: Date | null;
+  birthdate: string | null;
   obs: string | null;
   street: string | null;
   house_number: number | null;
@@ -16,6 +16,6 @@ export interface BuyerInterface {
   state_initials: string | null;
   state: string | null;
   country_code: string | null;
-  created_at: Date;
-  updated_at: Date;
+  created_at: string;
+  updated_at: string;
 }
