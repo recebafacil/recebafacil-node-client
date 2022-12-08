@@ -64,6 +64,7 @@ export interface TransactionInterface<
   resource: 'transaction';
   on_behalf_of: string;
   customer: string;
+  coupon: string | null;
   status: TransactionStatusType;
   amount: number;
   original_amount: number;
