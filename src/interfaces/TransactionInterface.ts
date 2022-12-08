@@ -43,6 +43,7 @@ export interface TransactionProductInterface<
   id: string;
   resource: 'transaction.product';
   customer: string;
+  checkout: string;
   transaction: string;
   offer: TransactionOfferInterface<OfferMetadata>;
   name: string;
