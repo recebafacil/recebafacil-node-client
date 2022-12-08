@@ -2,6 +2,7 @@ export interface CardInterface {
   id: string;
   resource: 'card';
   customer: string;
+  is_default: boolean;
   description: string | null;
   first4_digits: string;
   last4_digits: string;
