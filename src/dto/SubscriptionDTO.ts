@@ -8,6 +8,7 @@ export type CreateSubscriptionDTO = Pick<
   | 'payment_method'
   | 'due_date'
   | 'currency'
+  | 'metadata'
 >;
 
 export type UpdateSubscriptionDTO = Partial<
@@ -19,5 +20,6 @@ export type UpdateSubscriptionDTO = Partial<
     | 'payment_method'
     | 'due_date'
     | 'currency'
+    | 'metadata'
   >
 >;

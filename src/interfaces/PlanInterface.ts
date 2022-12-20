@@ -1,6 +1,6 @@
 import type { PaymentMethodType, PlanFrequencyType } from './types';
 
-export interface PlanInterface {
+export interface PlanInterface<T = Record<string, unknown>> {
   id: string;
   resource: 'plan';
   marketplace: string;
@@ -13,6 +13,7 @@ export interface PlanInterface {
   currency: string;
   description: string;
   duration: number;
+  metadata: T | null;
   created_at: string;
   updated_at: string;
 }

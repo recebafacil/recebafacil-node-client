@@ -1,6 +1,6 @@
 import type { SubscriptionStatusType } from './types';
 
-export interface SubscriptionInterface {
+export interface SubscriptionInterface<T = Record<string, unknown>> {
   id: string;
   resource: 'subscription';
   plan: string;
@@ -14,6 +14,7 @@ export interface SubscriptionInterface {
   currency: string;
   status: SubscriptionStatusType;
   suspended_at: string | null;
+  metadata: T | null;
   created_at: string;
   updated_at: string;
 }
