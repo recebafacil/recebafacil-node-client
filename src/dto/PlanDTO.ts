@@ -10,6 +10,7 @@ export type CreatePlanDTO = Pick<
   | 'setup_amount'
   | 'currency'
   | 'duration'
+  | 'metadata'
 >;
 
 export type UpdatePlanDTO = Partial<
@@ -23,5 +24,6 @@ export type UpdatePlanDTO = Partial<
     | 'setup_amount'
     | 'currency'
     | 'duration'
+    | 'metadata'
   >
 >;
