@@ -1,7 +1,21 @@
 import type { PlanInterface } from '../interfaces';
+import type { RequiredBy } from '../types';
 
-export type CreatePlanDTO = Pick<
-  PlanInterface,
+export type CreatePlanDTO = RequiredBy<
+  Partial<
+    Pick<
+      PlanInterface,
+      | 'name'
+      | 'frequency'
+      | 'interval'
+      | 'payment_methods'
+      | 'amount'
+      | 'setup_amount'
+      | 'currency'
+      | 'duration'
+      | 'metadata'
+    >
+  >,
   | 'name'
   | 'frequency'
   | 'interval'
@@ -10,7 +24,6 @@ export type CreatePlanDTO = Pick<
   | 'setup_amount'
   | 'currency'
   | 'duration'
-  | 'metadata'
 >;
 
 export type UpdatePlanDTO = Partial<
