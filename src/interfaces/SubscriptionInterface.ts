@@ -5,6 +5,7 @@ export interface SubscriptionInterface<T = Record<string, unknown>> {
   resource: 'subscription';
   plan: string;
   customer: string;
+  card: string | null;
   description: string | null;
   payment_method: 'credit';
   due_date: string;
