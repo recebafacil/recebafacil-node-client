@@ -5,6 +5,7 @@ export interface InvoiceInterface<T = Record<string, unknown>> {
   resource: 'invoice';
   subscription: string;
   customer: string;
+  transactions: string[];
   description: string | null;
   payment_method: PaymentMethodType;
   due_date: string;
