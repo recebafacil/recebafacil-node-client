@@ -1,4 +1,4 @@
-export type PaymentMethodType = 'credit' | 'boleto';
+export type PaymentMethodType = 'credit' | 'boleto' | 'pix';
 
 export type InvoiceStatusType = 'paid' | 'pending' | 'canceled' | 'failed';
 
