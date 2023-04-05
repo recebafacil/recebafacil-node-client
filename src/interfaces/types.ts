@@ -88,4 +88,4 @@ export type TransactionStatusType =
   | 'canceled'
   | 'refunded'
   | 'dispute'
-  | 'charge_back';
+  | 'charged_back';
