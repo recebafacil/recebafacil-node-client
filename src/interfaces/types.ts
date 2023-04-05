@@ -13,7 +13,7 @@ export type EventType =
   | 'bank_account.associated'
   | 'bank_account.deleted'
   | 'buyer.transaction.canceled'
-  | 'buyer.transaction.charge_back'
+  | 'buyer.transaction.charged_back'
   | 'buyer.transaction.disputed'
   | 'buyer.transaction.failed'
   | 'buyer.transaction.pre_authorized'
@@ -53,7 +53,7 @@ export type EventType =
   | 'transaction.canceled'
   | 'transaction.capture.failed'
   | 'transaction.capture.succeeded'
-  | 'transaction.charge_back'
+  | 'transaction.charged_back'
   | 'transaction.commission.succeeded'
   | 'transaction.created'
   | 'transaction.dispute.succeeded'
@@ -88,4 +88,4 @@ export type TransactionStatusType =
   | 'canceled'
   | 'refunded'
   | 'dispute'
-  | 'charge_back';
+  | 'charged_back';
