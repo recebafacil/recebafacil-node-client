@@ -12,6 +12,10 @@
     "lint": "yarn lint:eslint && yarn lint:prettier",
     "lint:eslint": "eslint \"src/**/*.{js,ts,jsx,tsx}\""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/recebafacil/recebafacil-node-client.git"
+  },
   "keywords": [],
   "author": "Receba Fácil",
   "license": "MIT",
