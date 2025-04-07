@@ -1,2 +1,12 @@
+# Environment
 node_modules
+.history
+.vscode
+.idea
+.env
+.env.*
+*.log
 dist
+
+# Test
+/coverage

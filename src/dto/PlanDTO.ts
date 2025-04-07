@@ -1,5 +1,5 @@
-import type { PlanInterface } from '../interfaces';
-import type { RequiredBy } from '../types';
+import type { PlanInterface } from '@/interfaces/plan-interface';
+import type { RequiredBy } from '@/types';
 
 export type CreatePlanDTO = RequiredBy<
   Partial<

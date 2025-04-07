@@ -1,0 +1,13 @@
+{
+  "entry": ["src/index.ts"],
+  "splitting": false,
+  "sourcemap": false,
+  "clean": true,
+  "bundle": true,
+  "format": ["cjs", "esm"],
+  "target": "ES2020",
+  "tsconfig": "./tsconfig.json",
+  "dts": true,
+  "minify": true,
+  "platform": "node"
+}

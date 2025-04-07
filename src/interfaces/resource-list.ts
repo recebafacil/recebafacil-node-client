@@ -1,4 +1,4 @@
-export interface ResourceListInterface<T> {
+export interface ResourceList<T> {
   resource: 'list';
   items: T[];
   limit: number;

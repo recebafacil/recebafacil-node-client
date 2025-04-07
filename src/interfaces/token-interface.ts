@@ -1,11 +1,11 @@
-import type { CardInterface } from './CardInterface';
+import type { Card } from './card';
 
 export interface TokenInterface {
   id: string;
   resource: 'token';
   used: boolean;
   type: 'card';
-  card: CardInterface;
+  card: Card;
   created_at: string;
   updated_at: string;
 }

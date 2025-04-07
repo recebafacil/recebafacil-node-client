@@ -1,5 +1,5 @@
-import type { BuyerInterface } from '../interfaces';
-import type { RequiredBy } from '../types';
+import type { BuyerInterface } from '@/interfaces/buyer-interface';
+import type { RequiredBy } from '@/types';
 
 export type CreateBuyerDTO = RequiredBy<
   Partial<

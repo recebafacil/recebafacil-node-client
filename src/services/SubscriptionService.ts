@@ -1,37 +1,34 @@
-import api from '../client-http';
-import type {
-  SubscriptionInterface,
-  RecebaResponseInterface,
-  ResourceListInterface,
-} from '../interfaces';
-
 import type {
   CreateSubscriptionDTO,
   UpdateSubscriptionDTO,
-} from '../dto/SubscriptionDTO';
+} from '@/dto/SubscriptionDTO';
+import type { ResourceList } from '@/interfaces/resource-list';
+import type { Response } from '@/interfaces/response';
+import type { SubscriptionInterface } from '@/interfaces/subscription-interface';
+
+import api from '../client-http';
 import SubscriptionRoutes from '../routes/SubscriptionRoutes';
 
 interface SubscriptionServiceInterface {
-  getAll: () => Promise<ResourceListInterface<SubscriptionInterface>>;
+  getAll: () => Promise<ResourceList<SubscriptionInterface>>;
   getById: (subscription_id: string) => Promise<SubscriptionInterface>;
   create: (data: CreateSubscriptionDTO) => Promise<SubscriptionInterface>;
   suspended: (subscription_id: string) => Promise<SubscriptionInterface>;
   reactivate: (subscription_id: string) => Promise<SubscriptionInterface>;
   update: (
     subscription_id: string,
-    data: UpdateSubscriptionDTO
+    data: UpdateSubscriptionDTO,
   ) => Promise<SubscriptionInterface>;
-  delete: (subscription_id: string) => Promise<RecebaResponseInterface>;
+  delete: (subscription_id: string) => Promise<Response>;
 }
 
 export default class SubscriptionService
-  implements SubscriptionServiceInterface {
-  async getAll(): Promise<ResourceListInterface<SubscriptionInterface>> {
+  implements SubscriptionServiceInterface
+{
+  async getAll(): Promise<ResourceList<SubscriptionInterface>> {
     const URN = SubscriptionRoutes.getAll();
 
-    const response = await api.get<
-      ResourceListInterface<SubscriptionInterface>
-    >(URN);
+    const response = await api.get<ResourceList<SubscriptionInterface>>(URN);
 
     return response.data;
   }
@@ -70,7 +67,7 @@ export default class SubscriptionService
 
   async update(
     subscription_id: string,
-    data: UpdateSubscriptionDTO
+    data: UpdateSubscriptionDTO,
   ): Promise<SubscriptionInterface> {
     const URN = SubscriptionRoutes.update(subscription_id);
 
@@ -79,7 +76,7 @@ export default class SubscriptionService
     return response.data;
   }
 
-  async delete(subscription_id: string): Promise<RecebaResponseInterface> {
+  async delete(subscription_id: string): Promise<Response> {
     const URN = SubscriptionRoutes.delete(subscription_id);
 
     const response = await api.delete(URN);

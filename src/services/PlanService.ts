@@ -1,25 +1,24 @@
+import type { CreatePlanDTO, UpdatePlanDTO } from '@/dto/PlanDTO';
+import type { PlanInterface } from '@/interfaces/plan-interface';
+import type { ResourceList } from '@/interfaces/resource-list';
+import type { Response } from '@/interfaces/response';
+
 import api from '../client-http';
-import type {
-  PlanInterface,
-  RecebaResponseInterface,
-  ResourceListInterface,
-} from '../interfaces';
-import type { CreatePlanDTO, UpdatePlanDTO } from '../dto/PlanDTO';
 import PlanRoutes from '../routes/PlanRoutes';
 
 interface PlanServiceInterface {
-  getAll: () => Promise<ResourceListInterface<PlanInterface>>;
+  getAll: () => Promise<ResourceList<PlanInterface>>;
   getById: (plan_id: string) => Promise<PlanInterface>;
   create: (data: CreatePlanDTO) => Promise<PlanInterface>;
   update: (plan_id: string, data: UpdatePlanDTO) => Promise<PlanInterface>;
-  delete: (plan_id: string) => Promise<RecebaResponseInterface>;
+  delete: (plan_id: string) => Promise<Response>;
 }
 
 export default class PlanService implements PlanServiceInterface {
-  async getAll(): Promise<ResourceListInterface<PlanInterface>> {
+  async getAll(): Promise<ResourceList<PlanInterface>> {
     const URN = PlanRoutes.getAll();
 
-    const response = await api.get<ResourceListInterface<PlanInterface>>(URN);
+    const response = await api.get<ResourceList<PlanInterface>>(URN);
 
     return response.data;
   }
@@ -48,7 +47,7 @@ export default class PlanService implements PlanServiceInterface {
     return response.data;
   }
 
-  async delete(plan_id: string): Promise<RecebaResponseInterface> {
+  async delete(plan_id: string): Promise<Response> {
     const URN = PlanRoutes.delete(plan_id);
 
     const response = await api.delete(URN);

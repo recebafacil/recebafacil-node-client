@@ -1,16 +1,36 @@
-import api from './client-http';
 import authenticate from './authentication';
-import InvoiceService from './services/InvoiceService';
-import SubscriptionService from './services/SubscriptionService';
-import TransactionService from './services/TransactionService';
+import api from './client-http';
 import type { RecebaFacilClientDTO } from './dto/RecebaFacilClientDTO';
-import PlanService from './services/PlanService';
 import BuyerService from './services/BuyerService';
 import CardService from './services/CardService';
+import InvoiceService from './services/InvoiceService';
+import PlanService from './services/PlanService';
+import SubscriptionService from './services/SubscriptionService';
+import TransactionService from './services/TransactionService';
 
-export * from './interfaces';
+export * from '@/interfaces/boleto';
+export * from '@/interfaces/buyer';
+export * from '@/interfaces/buyer-interface';
+export * from '@/interfaces/card';
+export * from '@/interfaces/card-interface';
+export * from '@/interfaces/event';
+export * from '@/interfaces/invoice-interface';
+export * from '@/interfaces/offer';
+export * from '@/interfaces/pix';
+export * from '@/interfaces/pix-interface';
+export * from '@/interfaces/plan';
+export * from '@/interfaces/plan-interface';
+export * from '@/interfaces/product';
+export * from '@/interfaces/resource-list';
+export * from '@/interfaces/response';
+export * from '@/interfaces/subscription';
+export * from '@/interfaces/subscription-interface';
+export * from '@/interfaces/token-interface';
+export * from '@/interfaces/transaction';
+export * from '@/interfaces/transaction-interface';
+export * from '@/interfaces/types';
 
-export default class RecebaFacilClient {
+export class RecebaFacilClient {
   public invoices: InvoiceService;
 
   public subscriptions: SubscriptionService;
@@ -23,7 +43,7 @@ export default class RecebaFacilClient {
 
   public cards: CardService;
 
-  constructor({
+  public constructor({
     marketplace_id,
     api_key,
     config = {
@@ -31,10 +51,13 @@ export default class RecebaFacilClient {
     },
   }: RecebaFacilClientDTO) {
     const authHeader = authenticate(api_key);
+
     api.interceptors.request.use(request => {
-      if (config?.environment === 'development')
+      if (config?.environment === 'development') {
         request.baseURL = 'https://test.api.recebafacil.com';
-      else request.baseURL = 'https://api.recebafacil.com';
+      } else {
+        request.baseURL = 'https://api.recebafacil.com';
+      }
 
       request.baseURL += `/marketplaces/${marketplace_id}`;
       request.auth = authHeader;
@@ -43,9 +66,7 @@ export default class RecebaFacilClient {
         request.method &&
         (request.method === 'POST' || request.method === 'PUT')
       ) {
-        request.headers = {
-          'Content-Type': 'application/json',
-        };
+        request.headers.set('Content-Type', 'application/json');
       }
 
       return request;

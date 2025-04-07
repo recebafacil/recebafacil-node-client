@@ -1,32 +1,29 @@
+import type { CreateInvoiceDTO, UpdateInvoiceDTO } from '@/dto/InvoiceDTO';
+import type { InvoiceInterface } from '@/interfaces/invoice-interface';
+import type { ResourceList } from '@/interfaces/resource-list';
+import type { Response } from '@/interfaces/response';
+
 import api from '../client-http';
-import type {
-  InvoiceInterface,
-  RecebaResponseInterface,
-  ResourceListInterface,
-} from '../interfaces';
-import type { CreateInvoiceDTO, UpdateInvoiceDTO } from '../dto/InvoiceDTO';
 import InvoiceRoutes from '../routes/InvoiceRoutes';
 
 interface InvoiceServiceInterface {
-  getAll: () => Promise<ResourceListInterface<InvoiceInterface>>;
+  getAll: () => Promise<ResourceList<InvoiceInterface>>;
   getById: (invoice_id: string) => Promise<InvoiceInterface>;
   create: (data: CreateInvoiceDTO) => Promise<InvoiceInterface>;
   approve: (invoice_id: string) => Promise<InvoiceInterface>;
   void: (invoice_id: string) => Promise<InvoiceInterface>;
   update: (
     invoice_id: string,
-    data: UpdateInvoiceDTO
+    data: UpdateInvoiceDTO,
   ) => Promise<InvoiceInterface>;
-  delete: (invoice_id: string) => Promise<RecebaResponseInterface>;
+  delete: (invoice_id: string) => Promise<Response>;
 }
 
 export default class InvoiceService implements InvoiceServiceInterface {
-  async getAll(): Promise<ResourceListInterface<InvoiceInterface>> {
+  async getAll(): Promise<ResourceList<InvoiceInterface>> {
     const URN = InvoiceRoutes.getAll();
 
-    const response = await api.get<ResourceListInterface<InvoiceInterface>>(
-      URN
-    );
+    const response = await api.get<ResourceList<InvoiceInterface>>(URN);
 
     return response.data;
   }
@@ -41,7 +38,7 @@ export default class InvoiceService implements InvoiceServiceInterface {
 
   async create(
     data: CreateInvoiceDTO,
-    options: Record<string, unknown> = {}
+    options: Record<string, unknown> = {},
   ): Promise<InvoiceInterface> {
     const URN = InvoiceRoutes.create();
 
@@ -68,7 +65,7 @@ export default class InvoiceService implements InvoiceServiceInterface {
 
   async update(
     invoice_id: string,
-    data: UpdateInvoiceDTO
+    data: UpdateInvoiceDTO,
   ): Promise<InvoiceInterface> {
     const URN = InvoiceRoutes.update(invoice_id);
 
@@ -77,7 +74,7 @@ export default class InvoiceService implements InvoiceServiceInterface {
     return response.data;
   }
 
-  async delete(invoice_id: string): Promise<RecebaResponseInterface> {
+  async delete(invoice_id: string): Promise<Response> {
     const URN = InvoiceRoutes.delete(invoice_id);
 
     const response = await api.delete(URN);

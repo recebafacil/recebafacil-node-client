@@ -1,4 +1,4 @@
-import type { PaymentMethodType } from '../interfaces';
+import type { PaymentMethodType } from '@/interfaces/types';
 
 type LateFeeModeType = 'FIXED' | 'PERCENTAGE';
 type InterestModeType =

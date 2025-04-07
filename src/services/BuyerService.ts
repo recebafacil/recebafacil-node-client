@@ -1,20 +1,18 @@
-import api from '../client-http';
-import type {
-  BuyerInterface,
-  RecebaResponseInterface,
-  ResourceListInterface,
-} from '../interfaces';
-import type { CreateBuyerDTO, UpdateBuyerDTO } from '../dto/BuyerDTO';
-import BuyerRoutes from '../routes/BuyerRoutes';
+import type { CreateBuyerDTO, UpdateBuyerDTO } from '@/dto/BuyerDTO';
+import type { BuyerInterface } from '@/interfaces/buyer-interface';
+import type { ResourceList } from '@/interfaces/resource-list';
+import type { Response } from '@/interfaces/response';
 
+import api from '../client-http';
+import BuyerRoutes from '../routes/BuyerRoutes';
 import BuyerCardsService from './BuyerCardsService';
 
 interface BuyerServiceInterface {
-  getAll: () => Promise<ResourceListInterface<BuyerInterface>>;
+  getAll: () => Promise<ResourceList<BuyerInterface>>;
   getById: (buyer_id: string) => Promise<BuyerInterface>;
   create: (data: CreateBuyerDTO) => Promise<BuyerInterface>;
   update: (buyer_id: string, data: UpdateBuyerDTO) => Promise<BuyerInterface>;
-  delete: (buyer_id: string) => Promise<RecebaResponseInterface>;
+  delete: (buyer_id: string) => Promise<Response>;
 }
 
 export default class BuyerService implements BuyerServiceInterface {
@@ -24,10 +22,10 @@ export default class BuyerService implements BuyerServiceInterface {
     this.cards = new BuyerCardsService();
   }
 
-  async getAll(): Promise<ResourceListInterface<BuyerInterface>> {
+  async getAll(): Promise<ResourceList<BuyerInterface>> {
     const URN = BuyerRoutes.getAll();
 
-    const response = await api.get<ResourceListInterface<BuyerInterface>>(URN);
+    const response = await api.get<ResourceList<BuyerInterface>>(URN);
 
     return response.data;
   }
@@ -50,7 +48,7 @@ export default class BuyerService implements BuyerServiceInterface {
 
   async update(
     buyer_id: string,
-    data: UpdateBuyerDTO
+    data: UpdateBuyerDTO,
   ): Promise<BuyerInterface> {
     const URN = BuyerRoutes.update(buyer_id);
 
@@ -59,7 +57,7 @@ export default class BuyerService implements BuyerServiceInterface {
     return response.data;
   }
 
-  async delete(buyer_id: string): Promise<RecebaResponseInterface> {
+  async delete(buyer_id: string): Promise<Response> {
     const URN = BuyerRoutes.delete(buyer_id);
 
     const response = await api.delete(URN);

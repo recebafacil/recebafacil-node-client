@@ -1,11 +1,12 @@
+import type { BoletoInterface } from '@/interfaces/boleto-interface';
+import type { CardInterface } from '@/interfaces/card-interface';
+import type { PixInterface } from '@/interfaces/pix-interface';
+
 import type {
   PaymentMethodType,
   ProductStatusType,
   TransactionStatusType,
 } from './types';
-import type { BoletoInterface } from './BoletoInterface';
-import type { PixInterface } from './PixInterface';
-import type { CardInterface } from './CardInterface';
 
 export interface HistoryTransactionInterface {
   id: string;
@@ -38,7 +39,7 @@ export interface TransactionOfferInterface<Metadata = Record<string, unknown>> {
 
 export interface TransactionProductInterface<
   Metadata = Record<string, unknown>,
-  OfferMetadata = Record<string, unknown>
+  OfferMetadata = Record<string, unknown>,
 > {
   id: string;
   resource: 'transaction.product';
@@ -59,7 +60,7 @@ export interface TransactionInterface<
   PaymentMethod = CardInterface | BoletoInterface | PixInterface,
   Metadata = Record<string, unknown>,
   ProductMetadata = Record<string, unknown>,
-  OfferMetadata = Record<string, unknown>
+  OfferMetadata = Record<string, unknown>,
 > {
   id: string;
   resource: 'transaction';

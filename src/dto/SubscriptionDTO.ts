@@ -1,5 +1,5 @@
-import type { SubscriptionInterface } from '../interfaces';
-import type { RequiredBy } from '../types';
+import type { SubscriptionInterface } from '@/interfaces/subscription-interface';
+import type { RequiredBy } from '@/types';
 
 export type CreateSubscriptionDTO = RequiredBy<
   Partial<
