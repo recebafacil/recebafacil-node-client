@@ -65,19 +65,22 @@ interface TransactionSource<Metadata = object> {
   updatedAt: string;
 }
 
-interface TransactionProduct {
+export interface TransactionProduct {
   product: Product;
   offer: Offer;
 }
 
-interface TransactionPlanProduct {
+export interface TransactionPlanProduct {
   subscription: Subscription;
   plan: Plan;
 }
 
-type TransactionProductType = TransactionProduct | TransactionPlanProduct;
+export type TransactionProductType =
+  | TransactionProduct
+  | TransactionPlanProduct;
 
-export interface Transaction extends TransactionSource {
+export interface Transaction<Metadata = object>
+  extends TransactionSource<Metadata> {
   buyer?: Buyer;
   paymentMethod?: Pix | Boleto | Card;
   products: TransactionProductType[];

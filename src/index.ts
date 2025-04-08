@@ -9,6 +9,7 @@ import SubscriptionService from './services/SubscriptionService';
 import TransactionService from './services/TransactionService';
 
 export * from '@/interfaces/boleto';
+export * from '@/interfaces/boleto-interface';
 export * from '@/interfaces/buyer';
 export * from '@/interfaces/buyer-interface';
 export * from '@/interfaces/card';

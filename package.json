@@ -1,9 +1,14 @@
 {
   "name": "@recebafacil/node-sdk",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "A Javascript library to interface with Fpay API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "private": false,
   "scripts": {
     "dev": "tsnd --transpile-only --respawn --ignore-watch node_modules src/index.ts",
     "build": "tsup",
