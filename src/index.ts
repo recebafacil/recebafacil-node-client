@@ -15,6 +15,7 @@ export * from '@/interfaces/buyer-interface';
 export * from '@/interfaces/card';
 export * from '@/interfaces/card-interface';
 export * from '@/interfaces/event';
+export * from '@/interfaces/invoice';
 export * from '@/interfaces/invoice-interface';
 export * from '@/interfaces/offer';
 export * from '@/interfaces/pix';
